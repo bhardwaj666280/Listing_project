@@ -1,5 +1,5 @@
 
-console.log(process.env.CLOUD_NAME);
+
 const mongoose = require("mongoose");
 
 const express = require('express');
