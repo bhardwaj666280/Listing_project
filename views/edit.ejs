@@ -1,0 +1,66 @@
+<% layout('/layouts/boilerplate') -%>
+
+    <body>
+        <div class="row">
+            <div class="col-8 offset-2 ">
+                <form action="/listings/<%= data._id  %>?_method=PUT" method="post" class="needs-validation" novalidate enctype="multipart/form-data">
+                    <br>                  
+                        <h4> Edit Your Listing   </h4>
+                       <br>
+                 
+
+                    <div class="mb-2">
+                        <label for="title" class="form-label">Title</label>
+                        <input type="text" class="form-control" name="title" value="<%= data.title %>" required>
+                        <div class="invalid-feedback">
+                            Enter Title
+                        </div>
+                    </div>
+
+                    <div class="mb-2">
+                        <label for="description" class="form-label">Description</label>
+                        <input type="text" class="form-control" name="description" value="<%= data.description %>"
+                            required>
+
+                        <div class="invalid-feedback">
+                            Please Enter discription
+                        </div>
+                    </div>
+                    <div class="mb-2">
+                        <label for="image-Url" class="form-label">Update-Image </label>
+                        <input type="file" class="form-control" name='image[url]' value=" <%= data.image %>">
+
+                    </div>
+                    <div class="row">
+                        <div class="mb-2 col-md-4">
+                            <label for="price" class="form-label">Price</label>
+                            <input type="text" class="form-control" name="price" value="<%= data.price %>" required>
+                            <div class="invalid-feedback">
+                                Please Enter Price
+                            </div>
+                        </div>
+                        <div class="mb-3 col-md-8">
+                            <label for="country" class="form-label">Country</label>
+                            <input type="text" class="form-control" id="exampleFormControlInput1" name="country"
+                                value="<%= data.country %>" required>
+                            <div class="invalid-feedback">
+                                Please Enter country
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-2">
+                        <label for="location" class="form-label">Location</label>
+                        <input type="text" class="form-control" name="location" value="<%= data.location %>" required>
+                        <div class="invalid-feedback">
+                            Please Enter location
+                        </div>
+                    </div>
+
+                    <button class=" btn btn-dark"> Submit</button>
+                </form>
+
+            </div>
+
+        </div>
+
+    </body>

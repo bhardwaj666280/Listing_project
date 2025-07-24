@@ -1,0 +1,156 @@
+<% layout('/layouts/boilerplate') -%>
+  <style>
+    .all {
+      display: flex;
+      margin-top: 1.2rem;
+      margin-bottom: 1.2rem;
+
+    }
+
+    .filters {
+      width: 70%;
+      display: flex;
+
+    }
+
+    .filter {
+      text-align: center;
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+      margin: 0 0.7rem 0 0.7rem;
+      opacity: 0.8;
+    }
+    .filter:hover {
+      opacity: 1;
+      cursor: pointer;
+    }
+
+    .filter span {
+      margin-top: 0.5rem;
+      font-size: 10px;
+      font-style: italic;
+    }
+
+    .taxes {
+      width: 30%;
+    }
+
+    .taxes-GST {
+      display: none;
+    }
+
+    .tax{
+      width: 3rem !important; 
+      height: 1.3rem !important;
+    }
+     @media  (max-width: 991.98px) { 
+           .all{
+            display: none;
+           }
+
+      }
+
+
+  </style>
+
+
+  <div class="all">
+    <div class="filters">
+      <div class="filter">
+        <i class="fa-solid fa-fire"></i>
+        <span>Tranding </span>
+      </div>
+
+      <div class="filter">
+        <i class="fa-solid fa-house"></i>
+        <span>House </span>
+      </div>
+      <div class="filter">
+        <i class="fa-solid fa-hill-avalanche"></i>
+        <span>Hill avalanche </span>
+      </div>
+      <div class="filter">
+        <i class="fa-solid fa-city"></i>
+        <span>Iconic Cities </span>
+      </div>
+      <div class="filter">
+        <i class="fa-solid fa-water-ladder"></i>
+        <span>Amozing Pools </span>
+      </div>
+
+      <div class="filter">
+        <i class="fa-solid fa-mountain-sun"></i>
+        <span>Mountain </span>
+      </div>
+      <div class="filter">
+        <i class="fa-solid fa-chess-rook"></i>
+        <span>Rooms </span>
+      </div>
+      <div class="filter">
+        <i class="fa-solid fa-chess-rook"></i>
+        <span>Caltels </span>
+      </div>
+      <div class="filter">
+        <i class="fa-solid fa-campground"></i>
+        <span>Camping </span>
+      </div>
+      <div class="filter">
+        <i class="fa-solid fa-newspaper"></i>
+        <span>Artic </span>
+      </div>
+      <div class="filter">
+        <i class="fa-solid fa-seedling"></i>
+        <span>Envirnment </span>
+      </div>
+    </div>
+
+
+
+    <div class="form-check form-switch form-check-reverse taxes d-flex ms-5">
+
+      <label class="form-check-label me-2" for="switchCheckReverse"><i> Display total after taxes </i></label>
+      <input class="form-check-input ms-2 tax " type="checkbox" id="switchCheckReverse">
+
+
+    </div>
+  </div>
+
+
+
+  <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3 ">
+    <% for(singleData of data ){ %>
+      <a href="/listings/<%= singleData._id %>" class="listing-tag">
+        <div class="col ">
+          <div class="card mb-4" style="width: 20rem;">
+            <img src="<%= singleData.image.url %>" class="card-img-top  card-img-opacity"
+              style="width: 20rem;height: 15rem;" alt="listing image">
+            <div class="card-body">
+              <h6>
+                <%= singleData.title %> <br>
+                  &#8377; <%= singleData.price%> /Night &nbsp;&nbsp;
+                    <span class="taxes-GST"> + 18% GST</span>
+              </h6>
+
+            </div>
+          </div>
+        </div>
+      </a>
+      <% } %>
+  </div>
+
+  <SCRipt>
+    let taxes = document.querySelector('#switchCheckReverse')
+    taxes.addEventListener('click', () => {
+      let taxes_info = document.querySelectorAll('.taxes-GST');
+      for (info of taxes_info) {
+        if (info.style.display != 'inline') {
+          info.style.display = 'inline';
+        }
+        else
+          info.style.display = 'none'
+      }
+    })
+
+
+  </SCRipt>

@@ -1,0 +1,82 @@
+<style>
+  .search-btn2 {
+    background-color: rgb(235, 39, 39);
+    color: white;
+    border-radius: 25px;
+    padding: 0 2rem 0 2rem;
+    font-style: italic;
+    opacity: 0.9;
+    display: inline;
+
+  }
+  
+  .search-btn2:hover {
+    background-color: rgb(235, 39, 39);
+    color: white;
+    opacity: 1;
+
+  }
+
+  .search-input {
+    border-radius: 25px;
+    padding: 0.2rem 1rem 0.2rem 1rem;
+    font-style: italic;
+    border: 1px solid gray;
+  }
+
+  .change_box {
+    background-color: whitesmoke !important;
+  }
+
+   .search-btn2 i{
+    display: inline;
+    margin-right: 0.5rem;
+   }
+
+</style>
+
+
+<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top bg-body-tertiary">
+  <div class="container-fluid change_box">
+    <a class="navbar-brand" href="/listings"><i class="fa-regular fa-compass"></i></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="/listings">Explore</a>
+        </li>
+      </ul>
+      <div class="ms-auto">
+        <div class="container-fluid">
+          <form class="d-flex" role="search">
+            <input class="form-control me-2 search-input" type="search" placeholder="Search" aria-label="Search" />
+            <button class="btn btn-outline-success search-btn2" type="submit"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
+          </form>
+        </div>
+      </div>
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/listings/add"> <i> <b> Airbnb Your Home    </b>  </i></a>
+        </li>
+        <% if(!currUser) { %>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/signup"><b><i> SignUp </i> </b></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/login"><b> <i>LogIn</i> </b></a>
+          </li>
+          <% } %>
+            <% if(currUser) { %>
+              <li class="nav-item">
+                <a class="nav-link" href="/logout"> <b> <i> LogOut</i></b></a>
+              </li>
+              <% } %>
+      </ul>
+    </div>
+  </div>
+ 
+
+</nav>

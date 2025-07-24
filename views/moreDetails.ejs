@@ -1,0 +1,117 @@
+<% layout('/layouts/boilerplate') -%>
+        <style>
+     .star_size{
+        font-size: 10px !important;
+        box-sizing: 20px !important;
+     }
+  .card_size{
+    width: 30rem;
+   height: 30rem;
+  }
+
+@media (max-width: 767.98px) { 
+     .card_size{
+    width: 18rem;
+    height: 30rem;
+  }
+ }
+ .review_side{
+    background-color: rgb(223, 203, 229);
+ }
+    
+
+
+
+        </style>
+        <div class="" >         
+                <div class="card mx-auto card_size ">
+                    <h5 class="card-title">
+                        <%= data.title %>
+                    </h5>
+                    <img src="<%= data.image.url %>" class="card-img-top " style=" height: 12rem">
+                    <div class="card-body">
+                        <p class="card-text">
+                            <b> OwnedBy: <%= data.Owner.username %> </b> <br>
+                            <%= data.description %> <br>
+                                <%= data.price %>/Night %> <br>
+                                    <%= data.location %> <br>
+                                        <%= data.country %>
+                        </p>
+                        <% if(currUser && currUser._id.equals(data.Owner._id)){ %>
+                            <div class="btns">
+                                <a href="/listings/<%= data._id %>/edit" class="btn btn-primary"
+                                    style="width: 5rem;">Edit
+                                </a>
+
+                                <form action="/listings/<%= data._id%>?_method=DELETE" method="post">
+                                    <button class="btn btn-primary offset-4">Delete</button>
+                                </form>
+                            </div>
+
+                            <% } %>
+                    </div>
+                </div>
+       
+
+          
+                <hr>
+                <h6 class="offset-5"> Leave a review !</h6>
+
+                <form action="/listings/<%= data._id %>/review" method="post" class="needs-validation mx-auto" novalidate>
+                
+                        <b class=> Rating :</b>
+                        <fieldset class="starability-slot" >                       
+                            <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="1" checked
+                                aria-label="No rating." />
+                            <input type="radio" id="first-rate1" name="review[rating]" value="1" />
+                            <label for="first-rate1" title="Terrible">1 star</label>
+                            <input type="radio" id="first-rate2" name="review[rating]" value="2" />
+                            <label for="first-rate2" title="Not good">2 stars</label>
+                            <input type="radio" id="first-rate3" name="review[rating]" value="3" />
+                            <label for="first-rate3" title="Average">3 stars</label>
+                            <input type="radio" id="first-rate4" name="review[rating]" value="4" />
+                            <label for="first-rate4" title="Very good">4 stars</label>
+                            <input type="radio" id="first-rate5" name="review[rating]" value="5" />
+                            <label for="first-rate5" title="Amazing">5 stars</label>
+                        </fieldset>
+                    
+                    <div class="mb-2">
+                        <label for="exampleFormControlTextarea1" class="form-label"> <b>  Comment : </b></label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" name="review[conment]" rows="2"
+                            required></textarea>
+                        <div class="invalid-feedback">
+                            Enter Comment here
+                        </div>
+                    </div>
+                    <button class="btn btn-primary ">Submit</button> <br> <br>
+                </form>
+
+            
+            <hr>
+           <div class="review_side">    
+                       <div class="d-flex flex-row mb-0 flex-wrap">
+                <% for(review of data.review){ %>
+                    <div class="card bg-light-subtle mx-2 my-2 border border-secondary  " style="width: 10rem;">
+                        <div class="card-body mb-1 ">
+                            <b>
+                                <p class="card-text   ">
+                                    <%= review.author.username %>
+                                </p>
+                            </b>
+                           
+                            <p class="starability-result star_size " data-rating="<%= review.rating %>">
+                            </p> Comment :<%= review.conment%>
+                                <form action="/listings/<%= data._id %>/review/<%= review._id%>?_method=Delete"
+                                    method="post">
+                                    <button class="btn btn-primary btn-sm sticky-bottom ">
+                                        Delete
+                                    </button>
+                                </form>
+                                
+                        </div>
+                    </div>
+                    <% } %>
+            </div>
+                </div>
+        </div>
+  
