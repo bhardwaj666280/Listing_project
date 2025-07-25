@@ -85,9 +85,10 @@ app.use((req, res, next) => {
     next();
 })
 
-app.use('/', user_route);
+
 app.use('/listings', listing_route);
 app.use('/', review_route);
+app.use('/', user_route);
 
 app.use((err, req, res, next) => {
     let { status = 500, message = 'error show' } = err;
