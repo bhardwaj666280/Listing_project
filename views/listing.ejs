@@ -4,6 +4,7 @@
       display: flex;
       margin-top: 1.2rem;
       margin-bottom: 1.2rem;
+     
 
     }
 
@@ -21,6 +22,7 @@
       margin: 0 0.7rem 0 0.7rem;
       opacity: 0.8;
     }
+
     .filter:hover {
       opacity: 1;
       cursor: pointer;
@@ -40,22 +42,40 @@
       display: none;
     }
 
-    .tax{
-      width: 3rem !important; 
+    .tax {
+      width: 3rem !important;
       height: 1.3rem !important;
     }
-     @media  (max-width: 991.98px) { 
-           .all{
-            display: none;
-           }
-
+   @media  (min-width:771px) and (max-width: 990px) {
+      .all {     
+      display: none;
       }
+    }
+   
 
-
+    @media (min-width:1px) and (max-width: 770px) {
+      .filters{
+        display: none;
+      }
+      .min_width {
+        display: flex;
+        justify-content: center;
+      }
+      .all2{         
+        width: 100% ;        
+      }
+      .min_width_tax {
+        display: flex;
+        justify-content: center;
+         width: 100%;
+         margin: auto;       
+      }
+    }
+    
   </style>
 
 
-  <div class="all">
+  <div class="all all2">
     <div class="filters">
       <div class="filter">
         <i class="fa-solid fa-fire"></i>
@@ -107,22 +127,19 @@
 
 
 
-    <div class="form-check form-switch form-check-reverse taxes d-flex ms-5">
-
+    <div class="form-check form-switch form-check-reverse taxes d-flex ms-5 min_width_tax min_width_dispaly ">
       <label class="form-check-label me-2" for="switchCheckReverse"><i> Display total after taxes </i></label>
       <input class="form-check-input ms-2 tax " type="checkbox" id="switchCheckReverse">
-
-
     </div>
   </div>
 
 
 
-  <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3 ">
+  <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3 min_width ">
 
     <% for(singleData of data ){ %>
       <a href="/listings/<%= singleData._id %>" class="listing-tag">
-        <div class="col ">
+        <div class="col min_width  ">
           <div class="card mb-4" style="width: 20rem;">
             <img src="<%= singleData.image.url %>" class="card-img-top  card-img-opacity"
               style="width: 20rem;height: 15rem;" alt="listing image">
