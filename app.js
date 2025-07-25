@@ -1,6 +1,5 @@
-
-
-const mongoose = require("mongoose");
+require('dotenv').config();
+console.log(process.env);
 
 const express = require('express');
 const app = express();
@@ -32,7 +31,7 @@ app.use(methodOverride('_method'))
 engine = require('ejs-mate')
 app.engine('ejs', engine);
 
-require('dotenv').config();
+
 const db_url = process.env.ALTAS_DB
 
 let port = 3000;
@@ -85,9 +84,7 @@ app.use((req, res, next) => {
     res.locals.currUser = req.user;
     next();
 })
-app.use('/demo', (req, res) => {
 
-})
 app.use('/', user_route);
 app.use('/listings', listing_route);
 app.use('/', review_route);
