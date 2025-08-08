@@ -1,6 +1,4 @@
 require('dotenv').config();
-console.log(process.env);
-
 const express = require('express');
 const app = express();
 
@@ -56,16 +54,13 @@ const sessin_option = {
     store,
     secret: process.env.SECRET,
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
     cookie: {
         expires: Date.now() + 2 * 24 * 60 * 60 * 1000,
         maxAge: 2 * 24 * 60 * 60 * 1000,
         httpOnly: true
     }
 }
-
-
-
 
 app.use(session(sessin_option));
 
@@ -81,14 +76,15 @@ app.use(flash())
 app.use((req, res, next) => {
     res.locals.success = req.flash('success');
     res.locals.error = req.flash('error');
-    res.locals.currUser = req.user;
+    res.locals.currUser = req.user ;
+    console.log(req.user)
     next();
 })
 
-
+app.use('/', user_route);
 app.use('/listings', listing_route);
 app.use('/', review_route);
-app.use('/', user_route);
+
 
 app.use((err, req, res, next) => {
     let { status = 500, message = 'error show' } = err;

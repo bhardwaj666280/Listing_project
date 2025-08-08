@@ -59,9 +59,9 @@
       </div>
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
-          <a class="nav-link" href="/listings/add"> <i> <b> Airbnb Your Home    </b>  </i></a>
+          <a class="nav-link" href="/listings/add"> <i>  Airbnb Your Home  </i></a>
         </li>
-        <% if(!currUser) { %>
+        <% if(typeof currUser !== 'undefined' &&!currUser) { %> 
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="/signup"><b><i> SignUp </i> </b></a>
           </li>
@@ -69,7 +69,7 @@
             <a class="nav-link" href="/login"><b> <i>LogIn</i> </b></a>
           </li>
           <% } %>
-            <% if(currUser) { %>
+            <% if(typeof currUser !== 'undefined' &&  currUser) { %>
               <li class="nav-item">
                 <a class="nav-link" href="/logout"> <b> <i> LogOut</i></b></a>
               </li>
