@@ -47,9 +47,6 @@ const store = MongoStore.create({
 store.on('error', (err) => {
     console.log("ERROR OCCURED IN SESSION STORE ", err)
 })
-
-
-
 const sessin_option = {
     store,
     secret: process.env.SECRET,
@@ -77,7 +74,7 @@ app.use((req, res, next) => {
     res.locals.success = req.flash('success');
     res.locals.error = req.flash('error');
     res.locals.currUser = req.user ;
-    console.log(req.user)
+    // console.log(req.user)
     next();
 })
 
